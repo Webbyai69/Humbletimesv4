@@ -1,0 +1,13 @@
+/pages/contact /contact/ 301
+/pages/about /about/ 301
+/policies/shipping-policy /shipping/ 301
+/policies/refund-policy /returns/ 301
+/policies/privacy-policy /privacy/ 301
+/policies/terms-of-service /terms/ 301
+/collections/all /shop/ 301
+/collections /shop/ 301
+/products /shop/ 301
+/search /shop/ 301
+/blogs/* /journal/ 301
+/account /shop/ 302
+/cart /shop/ 302
