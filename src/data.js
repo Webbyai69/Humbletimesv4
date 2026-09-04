@@ -7,7 +7,7 @@ module.exports = {
   site: {
     name: 'Humble Times Apparel',
     short: 'Humble Times',
-    url: 'https://humbletimesapparel.com',
+    url: 'https://humbletimesclothing.com',
     tagline: 'Irish streetwear from the South East',
     description: 'Humble Times Apparel is an Irish streetwear brand from Co. Wexford. Premium heavyweight hoodies, The Jersey, The Windbreaker and everyday essentials. Free delivery in Ireland over €60.',
     email: 'hello@humbletimesapparel.com',      // PLACEHOLDER — put your real address here
