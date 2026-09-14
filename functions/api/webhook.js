@@ -6,7 +6,8 @@ import { CATALOG } from '../_catalog.js';
 
 export async function onRequestPost({ request, env }) {
   const raw = await request.text();
-  if (env.STRIPE_WEBHOOK_SECRET) { const ok = await verify(raw, request.headers.get('stripe-signature') || '', env.STRIPE_WEBHOOK_SECRET); if (!ok) return new Response('bad signature', { status: 400 }); }
+  if (!env.STRIPE_WEBHOOK_SECRET) return new Response('webhook secret not set', { status: 500 });
+  { const ok = await verify(raw, request.headers.get('stripe-signature') || '', env.STRIPE_WEBHOOK_SECRET); if (!ok) return new Response('bad signature', { status: 400 }); }
   const ev = JSON.parse(raw);
   if (ev.type !== 'checkout.session.completed') return new Response('ignored');
   const s = ev.data.object;
