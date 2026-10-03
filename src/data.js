@@ -1,5 +1,7 @@
 // ===== EDIT THIS FILE, THEN RUN `node build.js` =====
 // Everything the site knows about Humble Times lives here.
+// Stock: the per-size `stock` numbers below are the fallback. humble-times-inventory.csv (repo root) overrides them
+// at build time, so update the CSV for day-to-day stock changes and keep these roughly in step.
 
 const CDN = 'https://humbletimesapparel.com/cdn/shop/files/'; // ← change to your R2 / /images/ path before closing Shopify
 
@@ -29,7 +31,7 @@ module.exports = {
   keywords: ['Irish streetwear', 'streetwear Ireland', 'Irish clothing brand', 'hoodies Ireland', 'Wexford clothing brand', 'Irish hoodie', 'Irish jersey'],
 
   products: [
-    { id: 'ht-jersey', stock: {XS:6,S:14,M:18,L:12,XL:7,'2XL':3}, fit: 'Model is 183 cm / 6ft and wears M', pairs: ['joggers-black','windbreaker'], name: 'The Jersey', price: 35, sizes: ['XS','S','M','L','XL','2XL'], tags: ['top-picks','tops'], badge: 'New', new: true,
+    { id: 'ht-jersey', stock: {XS:1,S:4,M:0,L:4,XL:1,'2XL':1}, fit: 'Model is 183 cm / 6ft and wears M', pairs: ['joggers-black','windbreaker'], name: 'The Jersey', price: 35, sizes: ['XS','S','M','L','XL','2XL'], tags: ['top-picks','tops'], badge: 'New', new: true,
       seoTitle: 'The Jersey – Burgundy Stripe Irish Jersey | Humble Times',
       seoDesc: 'The Jersey by Humble Times: burgundy stripes, ecru rugby collar, shamrock front and "éire" back print. 180 GSM soft-touch jersey, XS–2XL. €35, free Irish delivery over €60.',
       images: ['Square_Design_Layout.png?v=1780417394','D8F69DF4-20B3-4D27-BE77-08269915C944.jpg?v=1779779807','Square_Design_Layout_-_2.png?v=1780414780','Square_Design_Layout_-_4.png?v=1780414758','8F5EA7FC-05E5-440F-9146-466D22BEF069.jpg?v=1779779808','73410BFB-61F7-44D1-8FBC-EC0E7C260DCB.jpg?v=1779779808'],
@@ -48,7 +50,7 @@ module.exports = {
         { q: 'How does The Jersey fit?', a: 'Relaxed fit. Take your normal size for an easy, vintage-jersey look, or size down for a closer fit. Sizes XS to 2XL.' },
         { q: 'How long does delivery take in Ireland?', a: 'Orders ship from Co. Wexford within 1–2 working days and usually arrive 2–3 working days later with An Post. Free on orders over €60.' },
       ] },
-    { id: 'windbreaker', stock: {S:5,M:9,L:8,XL:4,'2XL':2}, fit: 'Model is 183 cm / 6ft and wears M over a hoodie', pairs: ['ht-jersey','navy-white-hoodie'], name: 'The Windbreaker', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['top-picks','outerwear'],
+    { id: 'windbreaker', stock: {S:2,M:4,L:2,XL:2,'2XL':3}, fit: 'Model is 183 cm / 6ft and wears M over a hoodie', pairs: ['ht-jersey','navy-white-hoodie'], name: 'The Windbreaker', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['top-picks','outerwear'],
       seoTitle: 'The Windbreaker – Lightweight Rain & Wind Jacket | Humble Times',
       seoDesc: 'The Windbreaker by Humble Times Ireland: dual-layer, wind and rain resistant, sweat and odour resistant lining. Built for Irish weather. S–2XL, €50.',
       images: ['Square_Design_Layout_-_6.png?v=1780417178','3040D89E-64F3-4E75-8EB1-8DBB831276B1.jpg?v=1778500174','4FA224C0-C65B-46E8-90BE-53A071974FF0.jpg?v=1778500175','E2DDED91-6EF6-4A3F-86D8-DCF63CEC6ED5.png?v=1778500176'],
@@ -61,28 +63,28 @@ module.exports = {
         { q: 'Is The Windbreaker waterproof?', a: 'It is wind and light-rain resistant, not fully waterproof. It is designed as an everyday layer for changeable Irish weather rather than heavy downpours.' },
         { q: 'Can I wear a hoodie underneath?', a: 'Yes — the fit is relaxed specifically so it layers over a hoodie or jersey.' },
       ] },
-    { id: 'navy-white-hoodie', stock: {S:4,M:11,L:9,XL:5,'2XL':0}, fit: 'Model is 180 cm and wears L for an oversized look', pairs: ['joggers-black','windbreaker'], name: 'Navy and White Hoodie', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['top-picks','hoodies'],
+    { id: 'navy-white-hoodie', stock: {S:1,M:1,L:1,XL:0,'2XL':3}, fit: 'Model is 180 cm and wears L for an oversized look', pairs: ['joggers-black','windbreaker'], name: 'Navy and White Hoodie', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['top-picks','hoodies'],
       seoTitle: 'Navy and White Hoodie – Heavyweight Oversized Irish Hoodie | Humble Times',
       seoDesc: 'Premium oversized navy hoodie with white Humble Times print. Heavyweight brushed fleece, made for Irish weather. S–2XL, €50, free delivery in Ireland over €60.',
       images: ['3F374010-40F2-40DF-B8D3-3F68F92C61D8.jpg?v=1778453876','AB1C7865-5716-4871-B28A-5C7581A50F52.jpg?v=1778453874'],
       blurb: 'Premium oversized hoodie in navy with a clean white print.',
       desc: ['Our premium oversized hoodie in navy and white. Heavyweight brushed fleece, a roomy dropped-shoulder fit and Humble Times branding front and back.','PLACEHOLDER — paste your full Shopify description here.'],
       details: ['Heavyweight brushed fleece','Oversized, dropped-shoulder fit','Double-lined hood','Ribbed cuffs and hem'], colour: 'Navy / white', care: 'Machine wash cold, inside out. Tumble dry low.', faq: [] },
-    { id: 'burgundy-pink-hoodie', stock: {S:6,M:8,L:7,XL:3,'2XL':2}, fit: 'Model is 180 cm and wears L for an oversized look', pairs: ['joggers-black'], name: 'Burgundy and Baby Pink Hoodie', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['hoodies'],
+    { id: 'burgundy-pink-hoodie', stock: {S:1,M:1,L:1,XL:2,'2XL':1}, fit: 'Model is 180 cm and wears L for an oversized look', pairs: ['joggers-black'], name: 'Burgundy and Baby Pink Hoodie', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['hoodies'],
       seoTitle: 'Burgundy and Baby Pink Hoodie – Oversized Irish Hoodie | Humble Times',
       seoDesc: 'Premium oversized burgundy hoodie with baby pink Humble Times print. Heavyweight brushed fleece, S–2XL, €50. Irish streetwear from Wexford.',
       images: ['163BC494-6427-4BA7-B0DB-F12629EC02F1.jpg?v=1778500352','A12C91E1-BD67-4523-BE15-A34B01C092A6.jpg?v=1778500353'],
       blurb: 'Premium oversized hoodie in burgundy with baby pink print.',
       desc: ['Our premium oversized hoodie in burgundy with a baby pink print. Same heavyweight fleece and relaxed fit as the navy edition.','PLACEHOLDER — paste your full Shopify description here.'],
       details: ['Heavyweight brushed fleece','Oversized, dropped-shoulder fit','Double-lined hood','Ribbed cuffs and hem'], colour: 'Burgundy / baby pink', care: 'Machine wash cold, inside out. Tumble dry low.', faq: [] },
-    { id: 'zip-hoodie-black', stock: {S:0,M:2,L:3,XL:1,'2XL':0}, fit: 'Model is 183 cm and wears M', pairs: ['joggers-black'], name: 'Heavyweight Zip Up Hoodie | Black', price: 25.5, was: 45, sizes: ['S','M','L','XL','2XL'], tags: ['hoodies','outerwear','clearance'],
+    { id: 'zip-hoodie-black', stock: {S:0,M:0,L:0,XL:1,'2XL':0}, fit: 'Model is 183 cm and wears M', pairs: ['joggers-black'], name: 'Heavyweight Zip Up Hoodie | Black', price: 25.5, was: 45, sizes: ['S','M','L','XL','2XL'], tags: ['hoodies','outerwear','clearance'],
       seoTitle: 'Heavyweight Black Zip Up Hoodie – Clearance | Humble Times',
       seoDesc: 'Heavyweight black zip-up hoodie from Irish brand Humble Times. Now €25.50 (was €45). Last sizes.',
       images: ['783A8C04-5BB0-4B60-85BB-1E6D817A2ABA.jpg?v=1778500812','954E860F-08CA-4D36-A086-FB9ADBB54D00.jpg?v=1778500814'],
       blurb: 'Heavyweight black zip-up. Last sizes.',
       desc: ['A heavyweight black zip-up hoodie built for layering. Clearance pricing while stock lasts.','PLACEHOLDER — paste your full Shopify description here.'],
       details: ['Heavyweight fleece','Full-length zip','Kangaroo pockets','Ribbed cuffs and hem'], colour: 'Black', care: 'Machine wash cold, inside out.', faq: [] },
-    { id: 'joggers-black', stock: {S:3,M:5,L:2,XL:0,'2XL':1}, fit: 'Model is 183 cm and wears M', pairs: ['navy-white-hoodie','ht-jersey'], name: 'Straight Leg Heavyweight Joggers | Black', price: 25.5, was: 30, sizes: ['S','M','L','XL','2XL'], tags: ['pants','clearance'],
+    { id: 'joggers-black', stock: {S:2,M:0,L:0,XL:1,'2XL':0}, fit: 'Model is 183 cm and wears M', pairs: ['navy-white-hoodie','ht-jersey'], name: 'Straight Leg Heavyweight Joggers | Black', price: 25.5, was: 30, sizes: ['S','M','L','XL','2XL'], tags: ['pants','clearance'],
       seoTitle: 'Straight Leg Heavyweight Joggers Black – Clearance | Humble Times',
       seoDesc: 'Straight-leg heavyweight joggers in black from Irish streetwear brand Humble Times. Now €25.50 (was €30).',
       images: ['C5F398C9-85C1-44D3-8E0E-B71B7FD4ADF1.png?v=1778500546','DC626089-9191-4D4B-A4BA-6483D3B0F3AC.jpg?v=1778500547'],
