@@ -1,6 +1,6 @@
-// GET /api/stock → { productId: { size: qty } }  (only when the STOCK KV namespace is bound)
+// GET /api/stock → { productId: { size: qty } }  — live KV stock when bound, otherwise the catalog numbers
 import { getStock } from '../_stock.js';
 export async function onRequestGet({ env }) {
-  const s = await getStock(env);
-  return new Response(JSON.stringify(s || {}), { status: s ? 200 : 204, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
+  const { _v, ...stock } = await getStock(env);
+  return new Response(JSON.stringify(stock), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 }
