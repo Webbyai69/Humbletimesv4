@@ -7,7 +7,8 @@ selectors on the cards, trust ticker, Fit Quiz, 10%-off welcome capture. Same en
 ## Files
 | Path | What |
 |---|---|
-| `src/data.js` | **Edit this.** Products, prices, per-size stock, fit notes, pairs, FAQs, Journal, reviews, ticker messages, `welcomeCode`, `season`. |
+| `humble-times-inventory.csv` | **Stock lives here.** One row per product + size (`product_slug,product_name,size,quantity`). Edit the numbers on GitHub and commit — Cloudflare rebuilds and the site, "Low stock" badges, sold-out sizes and checkout all use the new counts. A size left out counts as sold out. |
+| `src/data.js` | **Edit this.** Products, prices, fit notes, pairs, FAQs, Journal, reviews, ticker messages, `welcomeCode`, `season`. Its per-size `stock` is only the fallback when the CSV is missing. |
 | `src/site.css` / `src/site.js` | Design + behaviour. |
 | `build.js` | `node build.js` → `dist/` + `functions/_catalog.js`. |
 | `dist/` | **Upload this.** Already built. `preview-*.html` are app-preview copies only. |
