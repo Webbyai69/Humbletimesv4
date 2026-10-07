@@ -71,16 +71,18 @@ renderCart();
 /* ---- quick add: hover pills on desktop, bottom sheet on touch ---- */
 const sheet = $('#sheet');
 function closeSheet() { if (!sheet) return; sheet.classList.remove('on'); if (!drawer.classList.contains('on')) veil.classList.remove('on'); }
-function openSheet(id) { const p = byId(id); sheet.innerHTML = `<h3>${esc(p.name)} · ${eur(p.price)}</h3><div class="hint">${esc(p.fit || 'Relaxed fit')}</div><div class="sizes">${p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}"${inStock(id, s) ? '' : ' disabled'}>${s}</button>`).join('')}</div><div class="hint">Tap a size to add it to your bag</div>`; sheet.querySelectorAll('button[data-size]').forEach(b => b.onclick = () => add(id, b.dataset.size)); sheet.classList.add('on'); veil.classList.add('on'); }
+function openSheet(id) { const p = byId(id); sheet.innerHTML = `<h3>${esc(p.name)} · ${eur(p.price)}</h3><div class="hint">${esc(p.fit || 'Relaxed fit')}</div><div class="sizes">${p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}"${inStock(id, s) ? '' : ' disabled'}>${s}${inStock(id, s) && left(id, s) != null ? `<span class="n">${left(id, s)} left</span>` : ''}</button>`).join('')}</div><div class="hint">${esc(stockLine(id, p))}</div><div class="hint">Tap a size to add it to your bag</div>`; sheet.querySelectorAll('button[data-size]').forEach(b => b.onclick = () => add(id, b.dataset.size)); sheet.classList.add('on'); veil.classList.add('on'); }
 document.addEventListener('click', e => {
   const pill = e.target.closest('.qa button'); if (pill) { e.preventDefault(); if (!pill.classList.contains('so')) add(pill.closest('.card').dataset.id, pill.dataset.size); return; }
   const m = e.target.closest('.qa-m'); if (m) { e.preventDefault(); openSheet(m.closest('.card').dataset.id); return; }
   const pa = e.target.closest('[data-qa]'); if (pa) { e.preventDefault(); openSheet(pa.dataset.qa); }
 });
+const stockLine = (id, p) => { if (!(id in stock)) return ''; const t = p.sizes.reduce((a, s) => a + (left(id, s) ?? 0), 0); return t > 0 ? `${t} in stock · ${p.sizes.map(s => `${s}: ${left(id, s) ?? 0}`).join(' · ')}` : 'Sold out'; };
 function paintStock() {
   $$('.card[data-id]').forEach(c => { const id = c.dataset.id, p = byId(id); if (!p) return; const qa = c.querySelector('.qa'); if (qa) qa.innerHTML = p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}" aria-label="Add size ${s}">${s}</button>`).join('');
-    const tot = p.sizes.reduce((a, s) => a + (left(id, s) ?? 99), 0); const lowEl = c.querySelector('.low'); if (lowEl) lowEl.style.display = tot <= 8 ? '' : 'none'; });
-  const id = $('#addBtn')?.dataset.id; if (id) $$('#sizes button').forEach(b => { const s = b.dataset.size, n = left(id, s); b.classList.toggle('so', !inStock(id, s)); b.querySelector('.n')?.remove(); if (inStock(id, s) && n != null && n <= 3) b.insertAdjacentHTML('beforeend', `<span class="n">${n} left</span>`); });
+    const tot = p.sizes.reduce((a, s) => a + (left(id, s) ?? 99), 0); const lowEl = c.querySelector('.low'); if (lowEl) lowEl.style.display = tot <= 8 ? '' : 'none'; const st = c.querySelector('[data-stk]'); if (st) st.textContent = stockLine(id, p); });
+  const id = $('#addBtn')?.dataset.id; if (id) $$('#sizes button').forEach(b => { const s = b.dataset.size, n = left(id, s); b.classList.toggle('so', !inStock(id, s)); b.querySelector('.n')?.remove(); if (inStock(id, s) && n != null) b.insertAdjacentHTML('beforeend', `<span class="n">${n} left</span>`); });
+  if (id && $('#pstk')) $('#pstk').textContent = stockLine(id, byId(id));
   $('#sizes')?.classList.remove('loading');
 }
 paintStock();
@@ -110,7 +112,7 @@ $('#closeModal')?.addEventListener('click', closeModal);
   const beforeCut = isWD(now) && now.getHours() < D.cutoffHour; const ship = beforeCut ? new Date(now) : addWD(now, 1);
   const fmt = d => d.toLocaleDateString('en-IE', { weekday: 'short', day: 'numeric', month: 'short' });
   let cut = ''; if (beforeCut) { const m = D.cutoffHour * 60 - (now.getHours() * 60 + now.getMinutes()); cut = `<span class="cut">Order in the next ${Math.floor(m / 60)}h ${m % 60}m and it ships today</span>`; }
-  el.innerHTML = `<b>Delivery to Ireland: ${fmt(addWD(ship, 2))} – ${fmt(addWD(ship, 3))}</b><span>Ships ${beforeCut ? 'today' : fmt(ship)} from Co. Wexford · An Post tracked</span>${cut}`;
+  el.innerHTML = `<b>Delivery to Ireland: ${fmt(addWD(ship, 2))} – ${fmt(addWD(ship, 3))}</b><span>Ships ${beforeCut ? 'today' : fmt(ship)} from Co. Cork · An Post tracked</span>${cut}`;
 })();
 
 /* ---- product page ---- */

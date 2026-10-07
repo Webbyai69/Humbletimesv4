@@ -19,7 +19,7 @@ module.exports = {
     instagram: 'https://www.instagram.com/humbletimesapparel',
     tiktok: 'https://www.tiktok.com/@humbletimesapparel',
     freeShip: 60, shipIE: 5, shipEU: 9.95,
-    announce: ['FREE IRISH DELIVERY €60+','EASY 30-DAY RETURNS','SECURE PAYMENTS','SHIPS FROM WEXFORD'],
+    announce: ['FREE IRISH DELIVERY €60+','EASY 30-DAY RETURNS','SECURE PAYMENTS','SHIPS FROM CORK'],
     cutoffHour: 14, // orders before this (Dublin time) ship same working day
     nextDrop: '',
     welcomeCode: 'WELCOME10', // create this 10% promo code in Stripe → Product catalog → Coupons → Promotion codes
@@ -48,7 +48,7 @@ module.exports = {
       faq: [
         { q: 'What fabric is The Jersey made from?', a: 'A 60% cotton / 40% polyester blend at 180 GSM with a soft-touch finish — lightweight, breathable and holds its shape after washing.' },
         { q: 'How does The Jersey fit?', a: 'Relaxed fit. Take your normal size for an easy, vintage-jersey look, or size down for a closer fit. Sizes XS to 2XL.' },
-        { q: 'How long does delivery take in Ireland?', a: 'Orders ship from Co. Wexford within 1–2 working days and usually arrive 2–3 working days later with An Post. Free on orders over €60.' },
+        { q: 'How long does delivery take in Ireland?', a: 'Orders ship from Co. Cork within 1–2 working days and usually arrive 2–3 working days later with An Post. Free on orders over €60.' },
       ] },
     { id: 'windbreaker', stock: {S:2,M:4,L:2,XL:2,'2XL':3}, fit: 'Model is 183 cm / 6ft and wears M over a hoodie', pairs: ['ht-jersey','navy-white-hoodie'], name: 'The Windbreaker', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['top-picks','outerwear'],
       seoTitle: 'The Windbreaker – Lightweight Rain & Wind Jacket | Humble Times',
@@ -143,7 +143,7 @@ module.exports = {
     h1: 'Irish streetwear, made humbly',
     lede: 'Humble Times Apparel is a streetwear brand from the South East of Ireland, built on three things: quality, comfort and timeless design.',
     body: ['We believe great clothing should feel simple, clean and meaningful. Inspired by culture, creativity and self-expression, we make pieces designed for everyday wear and lasting style — premium hoodies, jerseys, windbreakers and essentials that elevate the everyday.',
-           'Everything is designed in Wexford and shipped from Wexford. Small runs, heavyweight fabrics, and details that nod to where we\'re from — a shamrock on the chest, "éire" on the back — without turning heritage into a costume.',
+           'Everything is designed in Wexford and shipped from Cork. Small runs, heavyweight fabrics, and details that nod to where we\'re from — a shamrock on the chest, "éire" on the back — without turning heritage into a costume.',
            'The name says it: humble times. Good things made without noise.'],
   },
 };
