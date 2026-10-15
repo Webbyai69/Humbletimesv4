@@ -3,7 +3,7 @@
 const D = window.HT, $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const eur = n => '€' + n.toFixed(2).replace('.', ',');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const img = (f, w = 800) => D.cdn + f + '&width=' + w;
+const img = (f, w) => D.cdn + f;
 const byId = id => D.products.find(p => p.id === id);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const store = { get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
