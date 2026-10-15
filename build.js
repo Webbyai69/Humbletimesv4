@@ -2,6 +2,8 @@
 const fs = require('fs'), path = require('path');
 const D = require('./src/data.js'), S = D.site;
 const OUT = path.join(__dirname, 'dist');
+// cache-buster: browsers keep /site.js and /site.css for a day, so the URL changes whenever either file changes
+const ASSET_V = require('crypto').createHash('sha1').update(fs.readFileSync(path.join(__dirname, 'src/site.js')) + fs.readFileSync(path.join(__dirname, 'src/site.css'))).digest('hex').slice(0, 8);
 
 // ---- Images: download every photo in src/data.js IMAGE_SOURCES into dist/images/ (fetch-images.js) ----
 // Any photo that can't be downloaded during the build is redirected to its original URL instead, so nothing shows blank.
@@ -84,7 +86,7 @@ function shell({ title, desc, url, body, jsonld = [], ogImage, type = 'website',
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>${/^https?:/.test(S.cdn) ? `<link rel="preconnect" href="${new URL(S.cdn).origin}">` : ''}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/site.css?v=${ASSET_V}">
 ${ld({ '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', '@id': S.url + '/#site', url: S.url, name: S.name, publisher: { '@id': S.url + '/#org' }, inLanguage: 'en-IE', potentialAction: { '@type': 'SearchAction', target: `${S.url}/shop/?q={search_term_string}`, 'query-input': 'required name=search_term_string' } }] })}
 ${jsonld.map(ld).join('\n')}
 </head>
@@ -123,7 +125,7 @@ ${quizModal()}
 <div class="pop" id="pop"><button class="x" id="popX" aria-label="Close">×</button><div><b>10% off your first order</b><p>Drops, restocks and early access. No spam.</p><form id="popForm"><label class="sr" for="pe">Email</label><input id="pe" name="email" type="email" required placeholder="Email address"><button type="submit">Get 10%</button></form></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script>window.HT=${clientData}</script>
-<script src="/site.js" defer></script>
+<script src="/site.js?v=${ASSET_V}" defer></script>
 </body></html>`;
 }
 
