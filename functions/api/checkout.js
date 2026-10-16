@@ -28,7 +28,9 @@ export async function onRequestPost({ request, env }) {
     f.set(`line_items[${n}][price_data][currency]`, 'eur');
     f.set(`line_items[${n}][price_data][unit_amount]`, String(p.price));
     f.set(`line_items[${n}][price_data][product_data][name]`, `${p.name} — ${it.size}`);
-    f.set(`line_items[${n}][price_data][product_data][images][0]`, p.image);
+    // Stripe needs an absolute https image URL — catalog images are self-hosted paths like /images/x.png
+    const imgUrl = p.image ? new URL(p.image, origin).href : '';
+    if (/^https:\/\//.test(imgUrl)) f.set(`line_items[${n}][price_data][product_data][images][0]`, imgUrl);
     f.set(`line_items[${n}][price_data][product_data][metadata][sku]`, `${it.id}-${it.size}`);
     n++;
   }
