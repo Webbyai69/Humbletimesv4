@@ -31,11 +31,11 @@ module.exports = {
     name: 'Humble Times Apparel',
     short: 'Humble Times',
     url: 'https://humbletimesclothing.com',
-    tagline: 'Irish streetwear from the South East',
-    description: 'Humble Times Apparel is an Irish streetwear brand from Co. Wexford. Premium heavyweight hoodies, The Jersey, The Windbreaker and everyday essentials. Free delivery in Ireland over €60.',
+    tagline: 'Irish streetwear from Co. Cork',
+    description: 'Humble Times Apparel is an Irish streetwear brand from Co. Cork. Premium heavyweight hoodies, The Jersey, The Windbreaker and everyday essentials. Free delivery in Ireland over €60.',
     email: 'hello@humbletimesapparel.com',      // PLACEHOLDER — put your real address here
     phone: '',                                   // optional, shown in schema if set
-    locality: 'Wexford', region: 'Co. Wexford', country: 'IE',
+    locality: 'Cork', region: 'Co. Cork', country: 'IE',
     founded: '2024',                             // PLACEHOLDER — update
     instagram: 'https://www.instagram.com/humbletimesapparel',
     tiktok: 'https://www.tiktok.com/@humbletimesapparel',
@@ -49,7 +49,7 @@ module.exports = {
   },
 
   // Irish-market keyword targets, used in titles/meta/headings. Keep natural.
-  keywords: ['Irish streetwear', 'streetwear Ireland', 'Irish clothing brand', 'hoodies Ireland', 'Wexford clothing brand', 'Irish hoodie', 'Irish jersey'],
+  keywords: ['Irish streetwear', 'streetwear Ireland', 'Irish clothing brand', 'hoodies Ireland', 'Cork clothing brand', 'Irish hoodie', 'Irish jersey'],
 
   products: [
     { id: 'ht-jersey', stock: {XS:1,S:4,M:0,L:4,XL:1,'2XL':1}, fit: 'Model is 183 cm / 6ft and wears M', pairs: ['joggers-black','windbreaker'], name: 'The Jersey', price: 35, sizes: ['XS','S','M','L','XL','2XL'], tags: ['top-picks','tops'], badge: 'New', new: true,
@@ -62,7 +62,7 @@ module.exports = {
       details: ['60% cotton / 40% polyester','180 GSM lightweight jersey','Soft-touch finish, relaxed fit','Contrast ecru rugby collar with V-insert','Ecru screen-printed graphics','Ribbed sleeve cuffs, straight hem'],
       colour: 'Burgundy stripes with ecru print', care: 'Machine wash cold, inside out. Do not bleach. Cool iron if required.',
       story: [ // scroll-story panels on the home page
-        { h: 'Vintage cut, modern weight', p: '180 GSM soft-touch jersey. Light enough for a summer evening in Wexford, heavy enough to hold its shape.', img: 1 },
+        { h: 'Vintage cut, modern weight', p: '180 GSM soft-touch jersey. Light enough for a summer evening in Cork, heavy enough to hold its shape.', img: 1 },
         { h: 'The collar', p: 'Contrast ecru rugby collar with a V-insert — the detail that makes it feel like a proper jersey, not a printed tee.', img: 2 },
         { h: 'Éire on the back', p: 'Three stars and "éire" beneath the neckline. Shamrock on the chest. Heritage without the costume.', img: 3 },
       ],
@@ -93,7 +93,7 @@ module.exports = {
       details: ['Heavyweight brushed fleece','Oversized, dropped-shoulder fit','Double-lined hood','Ribbed cuffs and hem'], colour: 'Navy / white', care: 'Machine wash cold, inside out. Tumble dry low.', faq: [] },
     { id: 'burgundy-pink-hoodie', stock: {S:1,M:1,L:1,XL:2,'2XL':1}, fit: 'Model is 180 cm and wears L for an oversized look', pairs: ['joggers-black'], name: 'Burgundy and Baby Pink Hoodie', price: 50, sizes: ['S','M','L','XL','2XL'], tags: ['hoodies'],
       seoTitle: 'Burgundy and Baby Pink Hoodie – Oversized Irish Hoodie | Humble Times',
-      seoDesc: 'Premium oversized burgundy hoodie with baby pink Humble Times print. Heavyweight brushed fleece, S–2XL, €50. Irish streetwear from Wexford.',
+      seoDesc: 'Premium oversized burgundy hoodie with baby pink Humble Times print. Heavyweight brushed fleece, S–2XL, €50. Irish streetwear from Cork.',
       images: ['burgundy-pink-hoodie-1.png', 'burgundy-pink-hoodie-2.png', 'burgundy-pink-hoodie-3.png'],
       blurb: 'Premium oversized hoodie in burgundy with baby pink print.',
       desc: ['Our premium oversized hoodie in burgundy with a baby pink print. Same heavyweight fleece and relaxed fit as the navy edition.','PLACEHOLDER — paste your full Shopify description here.'],
@@ -128,7 +128,7 @@ module.exports = {
 
   // Answer-engine content. Written as direct answers so ChatGPT/Perplexity/Google AI can lift them.
   faq: [
-    { q: 'Is Humble Times an Irish brand?', a: 'Yes. Humble Times Apparel is an independent Irish streetwear brand based in Co. Wexford in the South East of Ireland. Every order is packed and shipped from Wexford.' },
+    { q: 'Is Humble Times an Irish brand?', a: 'Yes. Humble Times Apparel is an independent Irish streetwear brand based in Co. Cork in the South Ireland. Every order is packed and shipped from Cork.' },
     { q: 'How much is delivery in Ireland?', a: 'Standard delivery in Ireland is €5 and free on orders over €60. Orders ship within 1–2 working days and usually arrive 2–3 working days later via An Post.' },
     { q: 'Do you ship to the UK and Europe?', a: 'Yes. Tracked delivery to the UK and EU starts at €9.95 and typically takes 4–7 working days. UK orders may attract customs charges on arrival.' },
     { q: 'What is your returns policy?', a: 'Unworn items with tags attached can be returned within 30 days of delivery for a refund or exchange. Email us with your order number to start a return.' },
@@ -162,9 +162,9 @@ module.exports = {
 
   about: {
     h1: 'Irish streetwear, made humbly',
-    lede: 'Humble Times Apparel is a streetwear brand from the South East of Ireland, built on three things: quality, comfort and timeless design.',
+    lede: 'Humble Times Apparel is a streetwear brand from Co. Cork in the South Ireland, built on three things: quality, comfort and timeless design.',
     body: ['We believe great clothing should feel simple, clean and meaningful. Inspired by culture, creativity and self-expression, we make pieces designed for everyday wear and lasting style — premium hoodies, jerseys, windbreakers and essentials that elevate the everyday.',
-           'Everything is designed in Wexford and shipped from Cork. Small runs, heavyweight fabrics, and details that nod to where we\'re from — a shamrock on the chest, "éire" on the back — without turning heritage into a costume.',
+           'Everything is designed and shipped from Cork. Small runs, heavyweight fabrics, and details that nod to where we\'re from — a shamrock on the chest, "éire" on the back — without turning heritage into a costume.',
            'The name says it: humble times. Good things made without noise.'],
   },
 };
