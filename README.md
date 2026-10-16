@@ -7,7 +7,7 @@ selectors on the cards, trust ticker, Fit Quiz, 10%-off welcome capture. Same en
 ## Files
 | Path | What |
 |---|---|
-| `humble-times-inventory.csv` | **Stock lives here.** One row per product + size (`product_slug,product_name,size,quantity`). Edit the numbers on GitHub and commit — Cloudflare rebuilds and the site, "Low stock" badges, sold-out sizes and checkout all use the new counts. A size left out counts as sold out. |
+| `humble-times-inventory.csv` | **Stock lives here.** One row per product + size (`product_slug,product_name,size,quantity`). Edit the numbers on GitHub and commit — Cloudflare rebuilds and the site, sold-out sizes and checkout all use the new counts. A size left out counts as sold out. |
 | `src/data.js` | **Edit this.** Products, prices, fit notes, pairs, FAQs, Journal, reviews, ticker messages, `welcomeCode`, `season`. Its per-size `stock` is only the fallback when the CSV is missing. |
 | `src/site.css` / `src/site.js` | Design + behaviour. |
 | `build.js` | `node build.js` → `dist/` + `functions/_catalog.js`. |
@@ -30,5 +30,5 @@ Create a promotion code matching `welcomeCode` (default `WELCOME10`, 10% off, fi
 1. Move images off Shopify's CDN → `dist/images/` or R2; update `cdn` in data.js.
 2. Search `PLACEHOLDER`: email, founding year, hoodie/jogger copy, policies, size chart, **stock numbers**.
 3. Old Shopify product handles → `_redirects` if they differ.
-4. Search Console + Bing Webmaster → `/sitemap.xml`. Google Business Profile for Wexford.
+4. Search Console + Bing Webmaster → `/sitemap.xml`. Google Business Profile for Cork.
 5. Test an order end to end with `sk_test_` keys before switching to live.
