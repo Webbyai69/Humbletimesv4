@@ -124,6 +124,14 @@ module.exports = {
 
   lookbook: ['ht-jersey-2.png', 'zip-hoodie-black-3.png', 'burgundy-pink-hoodie-2.png', 'navy-white-hoodie-3.png', 'windbreaker-2.png', 'ht-jersey-3.png'],
   hero: 'campaign-strip.jpg',
+  // "Worn in Cork" band on the home page. Files live in src/images/ (4:5 portrait, ~1000px wide) and are copied to dist/images/ on build.
+  campaign: [
+    { f: 'cork-1-windbreaker.jpg', alt: 'Black and white Humble Times windbreaker' },
+    { f: 'cork-2-navy-hoodie.jpg', alt: 'Navy Humble Times HT logo hoodie' },
+    { f: 'cork-3-patrick-st.jpg', alt: 'Humble Times Invite Only zip hoodies and joggers on the street in Cork' },
+    { f: 'cork-4-burgundy-hoodie.jpg', alt: 'Burgundy Humble Times HT logo hoodie' },
+    { f: 'cork-5-burgundy-pair.jpg', alt: 'Front and back of the burgundy Humble Times hoodie' },
+  ],
   storyImg: 'zip-hoodie-black-3.png',
 
   // Answer-engine content. Written as direct answers so ChatGPT/Perplexity/Google AI can lift them.
