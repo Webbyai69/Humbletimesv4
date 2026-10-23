@@ -160,6 +160,12 @@ module.exports = {
              'Still unsure? Every product page has model height and the size they\'re wearing, and our size guide lists flat-lay measurements for every size.'] },
   ],
 
+  // Homepage 'About us' section
+  aboutUs: {
+    text: 'Life moves fast, and sometimes we forget to appreciate the moments that matter most. Humble Times was created to remind you to live in the moment, and not take things for granted. To cherish the people around you, and enjoy the little things and wearing our pieces is a reminder of that.',
+    tagline: 'Humble Times. Appreciate the little things',
+  },
+
   about: {
     h1: 'Irish streetwear, made humbly',
     lede: 'Humble Times Apparel is a streetwear brand from Co. Cork in the South of Ireland, built on three things: quality, comfort and timeless design.',
