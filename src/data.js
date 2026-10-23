@@ -124,6 +124,8 @@ module.exports = {
 
   lookbook: ['ht-jersey-2.png', 'zip-hoodie-black-3.png', 'burgundy-pink-hoodie-2.png', 'navy-white-hoodie-3.png', 'windbreaker-2.png', 'ht-jersey-3.png'],
   hero: 'campaign-strip.jpg',
+  heroJersey: 'hero-jersey.jpg',   // homepage hero, left (The Jersey) — file in src/images/
+  heroHoodies: 'hero-hoodies.jpg', // homepage hero, right (Hoodies) — file in src/images/
   // "Worn in Cork" band on the home page. Files live in src/images/ (4:5 portrait, ~1000px wide) and are copied to dist/images/ on build.
   campaign: [
     { f: 'cork-1-windbreaker.jpg', alt: 'Black and white Humble Times windbreaker' },
