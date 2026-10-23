@@ -128,7 +128,7 @@ module.exports = {
 
   // Answer-engine content. Written as direct answers so ChatGPT/Perplexity/Google AI can lift them.
   faq: [
-    { q: 'Is Humble Times an Irish brand?', a: 'Yes. Humble Times Apparel is an independent Irish streetwear brand based in Co. Cork in the South Ireland. Every order is packed and shipped from Cork.' },
+    { q: 'Is Humble Times an Irish brand?', a: 'Yes. Humble Times Apparel is an independent Irish streetwear brand based in Co. Cork in the South of Ireland. Every order is packed and shipped from Cork.' },
     { q: 'How much is delivery in Ireland?', a: 'Standard delivery in Ireland is €5 and free on orders over €60. Orders ship within 1–2 working days and usually arrive 2–3 working days later via An Post.' },
     { q: 'Do you ship to the UK and Europe?', a: 'Yes. Tracked delivery to the UK and EU starts at €9.95 and typically takes 4–7 working days. UK orders may attract customs charges on arrival.' },
     { q: 'What is your returns policy?', a: 'Unworn items with tags attached can be returned within 30 days of delivery for a refund or exchange. Email us with your order number to start a return.' },
@@ -162,7 +162,7 @@ module.exports = {
 
   about: {
     h1: 'Irish streetwear, made humbly',
-    lede: 'Humble Times Apparel is a streetwear brand from Co. Cork in the South Ireland, built on three things: quality, comfort and timeless design.',
+    lede: 'Humble Times Apparel is a streetwear brand from Co. Cork in the South of Ireland, built on three things: quality, comfort and timeless design.',
     body: ['We believe great clothing should feel simple, clean and meaningful. Inspired by culture, creativity and self-expression, we make pieces designed for everyday wear and lasting style — premium hoodies, jerseys, windbreakers and essentials that elevate the everyday.',
            'Everything is designed and shipped from Cork. Small runs, heavyweight fabrics, and details that nod to where we\'re from — a shamrock on the chest, "éire" on the back — without turning heritage into a costume.',
            'The name says it: humble times. Good things made without noise.'],

@@ -110,7 +110,7 @@ $('#closeModal')?.addEventListener('click', closeModal);
   const beforeCut = isWD(now) && now.getHours() < D.cutoffHour; const ship = beforeCut ? new Date(now) : addWD(now, 1);
   const fmt = d => d.toLocaleDateString('en-IE', { weekday: 'short', day: 'numeric', month: 'short' });
   let cut = ''; if (beforeCut) { const m = D.cutoffHour * 60 - (now.getHours() * 60 + now.getMinutes()); cut = `<span class="cut">Order in the next ${Math.floor(m / 60)}h ${m % 60}m and it ships today</span>`; }
-  el.innerHTML = `<b>Delivery to Ireland: ${fmt(addWD(ship, 2))} – ${fmt(addWD(ship, 3))}</b><span>Ships ${beforeCut ? 'today' : fmt(ship)} from Co. Wexford · An Post tracked</span>${cut}`;
+  el.innerHTML = `<b>Delivery to Ireland: ${fmt(addWD(ship, 2))} – ${fmt(addWD(ship, 3))}</b><span>Ships ${beforeCut ? 'today' : fmt(ship)} from Co. Cork · An Post tracked</span>${cut}`;
 })();
 
 /* ---- product page ---- */
