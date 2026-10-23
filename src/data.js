@@ -40,7 +40,7 @@ module.exports = {
     instagram: 'https://www.instagram.com/humbletimesapparel',
     tiktok: 'https://www.tiktok.com/@humbletimesapparel',
     freeShip: 60, shipIE: 5, shipEU: 9.95,
-    announce: ['FREE IRISH DELIVERY €60+','EASY 30-DAY RETURNS','SECURE PAYMENTS','SHIPS FROM CORK'],
+    announce: ['FREE IRISH DELIVERY €60+','SECURE PAYMENTS','SHIPS FROM CORK'],
     cutoffHour: 14, // orders before this (Dublin time) ship same working day
     nextDrop: '',
     welcomeCode: 'WELCOME10', // create this 10% promo code in Stripe → Product catalog → Coupons → Promotion codes
@@ -141,7 +141,7 @@ module.exports = {
     { q: 'Is Humble Times an Irish brand?', a: 'Yes. Humble Times Apparel is an independent Irish streetwear brand based in Co. Cork in the South of Ireland. Every order is packed and shipped from Cork.' },
     { q: 'How much is delivery in Ireland?', a: 'Standard delivery in Ireland is €5 and free on orders over €60. Orders ship within 1–2 working days and usually arrive 2–3 working days later via An Post.' },
     { q: 'Do you ship to the UK and Europe?', a: 'Yes. Tracked delivery to the UK and EU starts at €9.95 and typically takes 4–7 working days. UK orders may attract customs charges on arrival.' },
-    { q: 'What is your returns policy?', a: 'Unworn items with tags attached can be returned within 30 days of delivery for a refund or exchange. Email us with your order number to start a return.' },
+    { q: 'What is your returns policy?', a: 'If there is a problem with your order, email us with your order number and we will sort it out. Faulty items are always covered.' },
     { q: 'How do Humble Times hoodies fit?', a: 'Our hoodies are oversized with a dropped shoulder. Take your usual size for the intended relaxed fit, or size down for something closer to regular.' },
     { q: 'What sizes do you stock?', a: 'Most pieces run S to 2XL. The Jersey runs XS to 2XL. Full garment measurements are on our size guide.' },
     { q: 'How can I pay?', a: 'Visa, Mastercard, Apple Pay, Google Pay and Revolut Pay, all through secure checkout. Prices are in euro and include VAT.' },
