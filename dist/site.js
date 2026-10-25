@@ -3,7 +3,7 @@
 const D = window.HT, $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const eur = n => '€' + n.toFixed(2).replace('.', ',');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const img = (f, w = 800) => D.cdn + f + '&width=' + w;
+const img = (f, w) => D.cdn + f;
 const byId = id => D.products.find(p => p.id === id);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const store = { get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
@@ -54,7 +54,7 @@ function renderCart() {
   $('#cartCount').textContent = qty();
   const L = $('#lines'), F = $('#drawerFoot');
   if (!cart.length) { L.innerHTML = `<div class="cart-empty"><b>Your bag is empty</b><p>Start with The Jersey.</p><p style="margin-top:16px"><a class="btn" href="/products/ht-jersey/">Shop The Jersey</a></p></div>`; F.innerHTML = ''; return; }
-  L.innerHTML = cart.map((l, i) => { const p = byId(l.id), n = left(l.id, l.size); return `<div class="line"><img src="${img(p.images[0], 300)}" alt=""><div><h4><a href="/products/${p.id}/">${esc(p.name)}</a></h4><div class="sz">Size ${l.size}${n != null && n <= 3 ? ` · <span style="color:var(--sale)">only ${n} left</span>` : ''}</div><div style="display:flex;align-items:center"><span class="qty"><button aria-label="Decrease" onclick="setQty(${i},${l.qty - 1})">−</button><output>${l.qty}</output><button aria-label="Increase" onclick="setQty(${i},${l.qty + 1})">+</button></span><button class="rm" onclick="setQty(${i},0)">Remove</button></div></div><div class="amt">${eur(p.price * l.qty)}</div></div>`; }).join('');
+  L.innerHTML = cart.map((l, i) => { const p = byId(l.id), n = left(l.id, l.size); return `<div class="line"><img src="${img(p.images[0], 300)}" alt=""><div><h4><a href="/products/${p.id}/">${esc(p.name)}</a></h4><div class="sz">Size ${l.size}</div><div style="display:flex;align-items:center"><span class="qty"><button aria-label="Decrease" onclick="setQty(${i},${l.qty - 1})">−</button><output>${l.qty}</output><button aria-label="Increase" onclick="setQty(${i},${l.qty + 1})">+</button></span><button class="rm" onclick="setQty(${i},0)">Remove</button></div></div><div class="amt">${eur(p.price * l.qty)}</div></div>`; }).join('');
   const inCart = new Set(cart.map(l => l.id)); const sugg = [...new Set(cart.flatMap(l => byId(l.id).pairs || []))].filter(id => !inCart.has(id)).slice(0, 2);
   if (sugg.length) L.innerHTML += `<div class="xsell"><h4>Pair it with</h4>${pairHtml(sugg)}</div>`;
   const t = total(), lf = D.freeShip - t;
@@ -71,16 +71,18 @@ renderCart();
 /* ---- quick add: hover pills on desktop, bottom sheet on touch ---- */
 const sheet = $('#sheet');
 function closeSheet() { if (!sheet) return; sheet.classList.remove('on'); if (!drawer.classList.contains('on')) veil.classList.remove('on'); }
-function openSheet(id) { const p = byId(id); sheet.innerHTML = `<h3>${esc(p.name)} · ${eur(p.price)}</h3><div class="hint">${esc(p.fit || 'Relaxed fit')}</div><div class="sizes">${p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}"${inStock(id, s) ? '' : ' disabled'}>${s}</button>`).join('')}</div><div class="hint">Tap a size to add it to your bag</div>`; sheet.querySelectorAll('button[data-size]').forEach(b => b.onclick = () => add(id, b.dataset.size)); sheet.classList.add('on'); veil.classList.add('on'); }
+function openSheet(id) { const p = byId(id); sheet.innerHTML = `<h3>${esc(p.name)} · ${eur(p.price)}</h3><div class="hint">${esc(p.fit || 'Relaxed fit')}</div><div class="sizes">${p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}"${inStock(id, s) ? '' : ' disabled'}>${s}</button>`).join('')}</div><div class="hint">${esc(stockLine(id, p))}</div><div class="hint">Tap a size to add it to your bag</div>`; sheet.querySelectorAll('button[data-size]').forEach(b => b.onclick = () => add(id, b.dataset.size)); sheet.classList.add('on'); veil.classList.add('on'); }
 document.addEventListener('click', e => {
   const pill = e.target.closest('.qa button'); if (pill) { e.preventDefault(); if (!pill.classList.contains('so')) add(pill.closest('.card').dataset.id, pill.dataset.size); return; }
   const m = e.target.closest('.qa-m'); if (m) { e.preventDefault(); openSheet(m.closest('.card').dataset.id); return; }
   const pa = e.target.closest('[data-qa]'); if (pa) { e.preventDefault(); openSheet(pa.dataset.qa); }
 });
+const stockLine = (id, p) => (id in stock && !p.sizes.some(s => inStock(id, s))) ? 'Sold out' : ''; // counts are never shown
 function paintStock() {
   $$('.card[data-id]').forEach(c => { const id = c.dataset.id, p = byId(id); if (!p) return; const qa = c.querySelector('.qa'); if (qa) qa.innerHTML = p.sizes.map(s => `<button data-size="${s}" class="${inStock(id, s) ? '' : 'so'}" aria-label="Add size ${s}">${s}</button>`).join('');
-    const tot = p.sizes.reduce((a, s) => a + (left(id, s) ?? 99), 0); const lowEl = c.querySelector('.low'); if (lowEl) lowEl.style.display = tot <= 8 ? '' : 'none'; });
-  const id = $('#addBtn')?.dataset.id; if (id) $$('#sizes button').forEach(b => { const s = b.dataset.size, n = left(id, s); b.classList.toggle('so', !inStock(id, s)); b.querySelector('.n')?.remove(); if (inStock(id, s) && n != null && n <= 3) b.insertAdjacentHTML('beforeend', `<span class="n">${n} left</span>`); });
+    const st = c.querySelector('[data-stk]'); if (st) st.textContent = stockLine(id, p); });
+  const id = $('#addBtn')?.dataset.id; if (id) $$('#sizes button').forEach(b => { const s = b.dataset.size, n = left(id, s); b.classList.toggle('so', !inStock(id, s)); b.querySelector('.n')?.remove(); });
+  if (id && $('#pstk')) $('#pstk').textContent = stockLine(id, byId(id));
   $('#sizes')?.classList.remove('loading');
 }
 paintStock();
