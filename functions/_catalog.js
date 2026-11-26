@@ -2,7 +2,7 @@
 export const FREE_SHIP_CENTS = 6000;
 export const SHIP_IE_CENTS = 500;
 export const SHIP_EU_CENTS = 995;
-export const STOCK_VERSION = 'fe50873449e6'; // changes whenever the stock numbers change → live KV stock is re-seeded
+export const STOCK_VERSION = '0c4798e52f26'; // changes whenever the stock numbers change → live KV stock is re-seeded
 export const CATALOG = {
  "ht-jersey": {
   "name": "The Jersey",
@@ -74,7 +74,7 @@ export const CATALOG = {
    "2XL"
   ],
   "stock": {
-   "S": 1,
+   "S": 0,
    "M": 1,
    "L": 1,
    "XL": 2,
@@ -112,7 +112,7 @@ export const CATALOG = {
    "2XL"
   ],
   "stock": {
-   "S": 2,
+   "S": 1,
    "M": 0,
    "L": 0,
    "XL": 1,

@@ -16,7 +16,8 @@ selectors on the cards, trust ticker, Fit Quiz, 10%-off welcome capture. Same en
 
 ## Deploy
 GitHub → Cloudflare Pages → build `node build.js`, output `dist`. Env vars: `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`,
-optional `RESEND_API_KEY` / `MAIL_FROM` / `MAIL_NOTIFY`, `STRIPE_TAX=true`. KV bindings: `STOCK`, `ORDERS`, `NOTIFY`, `NEWSLETTER`, `CONTACT`.
+optional `RESEND_API_KEY` / `MAIL_FROM` / `MAIL_NOTIFY`, `STRIPE_TAX=true`.
+`GITHUB_TOKEN` (fine-grained token, this repo only, Contents: Read and write) — after every website order the new stock counts are committed to `humble-times-inventory.csv`, so editing the file later never undoes web sales. Without it, live stock still updates but the file goes stale. KV bindings: `STOCK`, `ORDERS`, `NOTIFY`, `NEWSLETTER`, `CONTACT`.
 Create a promotion code matching `welcomeCode` (default `WELCOME10`, 10% off, first order only) in Stripe.
 
 ## What's new in v4

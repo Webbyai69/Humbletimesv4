@@ -1,8 +1,10 @@
 // POST /api/webhook  ← Stripe "checkout.session.completed"
-// Verifies the signature, decrements stock, stores the order in KV ORDERS, emails a confirmation (Resend).
+// Verifies the signature, decrements stock, stores the order in KV ORDERS, saves the new counts to
+// humble-times-inventory.csv on GitHub (needs GITHUB_TOKEN, see _github.js), emails a confirmation (Resend).
 // Stripe dashboard → Developers → Webhooks → endpoint https://yourdomain/api/webhook → copy signing secret to STRIPE_WEBHOOK_SECRET
 import { decrement } from '../_stock.js';
 import { CATALOG } from '../_catalog.js';
+import { saveSaleToGitHub } from '../_github.js';
 
 export async function onRequestPost({ request, env }) {
   const raw = await request.text();
@@ -12,9 +14,12 @@ export async function onRequestPost({ request, env }) {
   if (ev.type !== 'checkout.session.completed') return new Response('ignored');
   const s = ev.data.object;
   const lines = (s.metadata?.items || '').split(',').filter(Boolean).map(x => { const [id, size, qty] = x.split('|'); return { id, size, qty: +qty }; });
+  if (env.ORDERS && await env.ORDERS.get(s.id)) return new Response('already processed'); // Stripe can resend an event; don't take stock twice
   await decrement(env, lines);
   const order = { id: s.id, number: 'HT-' + s.id.slice(-8).toUpperCase(), email: s.customer_details?.email, name: s.customer_details?.name, total: s.amount_total, currency: s.currency, lines, shipping: s.shipping_details || s.collected_information?.shipping_details || null, created: new Date(s.created * 1000).toISOString(), status: 'paid' };
   if (env.ORDERS) await env.ORDERS.put(order.id, JSON.stringify(order));
+  try { const g = await saveSaleToGitHub(env, lines, order.number); if (!g.ok) console.log('stock file not updated:', g.reason); }
+  catch (e) { console.log('stock file not updated:', e.message); } // never fail the order over this
   if (env.RESEND_API_KEY && order.email) await sendEmail(env, order);
   return new Response('ok');
 }
