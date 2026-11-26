@@ -40,6 +40,7 @@ module.exports = {
     instagram: 'https://www.instagram.com/humbletimesapparel',
     tiktok: 'https://www.tiktok.com/@humbletimesapparel',
     freeShip: 60, shipIE: 5, shipEU: 9.95,
+    promo: { text: 'Black Friday Sale — 25% off', code: 'BLACKFRIDAY' }, // top banner; set to null to hide. Create the matching promo code in Stripe
     announce: ['FREE IRISH DELIVERY €60+','SECURE PAYMENTS','SHIPS FROM CORK'],
     cutoffHour: 14, // orders before this (Dublin time) ship same working day
     nextDrop: '',
