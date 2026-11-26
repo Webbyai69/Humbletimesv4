@@ -39,6 +39,13 @@ input,select,textarea{font:inherit}
 @keyframes vo{to{opacity:0}}@keyframes vi{from{opacity:0}}
 @media(prefers-reduced-motion:reduce){.rv,.stagger>*{opacity:1;transform:none;transition:none}*{animation-duration:.001s!important;transition-duration:.001s!important}}
 
+/* promo banner */
+.promo{background:var(--sale);color:#fff;text-align:center;padding:9px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;line-height:1.4}
+.promo b{font-weight:700;margin-right:6px}
+.promo-code{font:inherit;font-weight:700;color:var(--sale);background:#fff;padding:2px 8px;margin:0 2px;border:0;cursor:pointer;letter-spacing:.1em}
+.promo-code:hover{background:var(--ink);color:#fff}
+@media(max-width:600px){.promo{font-size:11px}.promo b{display:block;margin:0 0 2px}}
+
 /* ticker */
 .ticker{background:var(--ink);color:#fff;overflow:hidden;height:30px;display:flex;align-items:center}
 .ticker div{display:flex;white-space:nowrap;animation:tk 28s linear infinite}
