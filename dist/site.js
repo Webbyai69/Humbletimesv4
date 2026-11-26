@@ -33,7 +33,7 @@ window.HT_REVEAL_ALL = () => revealables.forEach(el => el.classList.add('in'));
 
 /* ---- toast ---- */
 let tt; const toast = m => { const t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2400); };
-document.addEventListener('click', e => { const b = e.target.closest('.promo-code'); if (!b) return; const c = b.dataset.code; (navigator.clipboard ? navigator.clipboard.writeText(c) : Promise.reject()).then(() => toast(`Code ${c} copied`), () => toast(`Use code ${c} at checkout`)); });
+document.addEventListener('click', e => { const b = e.target.closest('.bf-code'); if (!b) return; const c = b.dataset.code; (navigator.clipboard ? navigator.clipboard.writeText(c) : Promise.reject()).then(() => toast(`Code ${c} copied`), () => toast(`Use code ${c} at checkout`)); });
 
 /* ---- stock: static from data.js, overridden by /api/stock (KV) when live ---- */
 const stock = {}; D.products.forEach(p => stock[p.id] = { ...(p.stock || {}) });

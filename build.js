@@ -92,7 +92,7 @@ ${jsonld.map(ld).join('\n')}
 </head>
 <body>
 <a class="sr" href="#main">Skip to content</a>
-${S.promo ? `<div class="promo" role="region" aria-label="Promotion"><b>${esc(S.promo.text)}</b> <span>Use code <button type="button" class="promo-code" data-code="${esc(S.promo.code)}" aria-label="Copy code ${esc(S.promo.code)}">${esc(S.promo.code)}</button> at checkout</span></div>` : ''}
+${S.promo ? `<div class="bf-banner" role="region" aria-label="Promotion"><b>${esc(S.promo.text)}</b> <span>Use code <button type="button" class="bf-code" data-code="${esc(S.promo.code)}" aria-label="Copy code ${esc(S.promo.code)}">${esc(S.promo.code)}</button> at checkout</span></div>` : ''}
 <div class="ticker" aria-hidden="true"><div>${S.announce.concat(S.announce).map(a => `<span>${esc(a)}</span>`).join('')}</div></div>
 <header class="site">
   <div class="wrap nav">
