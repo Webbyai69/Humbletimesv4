@@ -2,7 +2,7 @@
 export const FREE_SHIP_CENTS = 6000;
 export const SHIP_IE_CENTS = 500;
 export const SHIP_EU_CENTS = 995;
-export const STOCK_VERSION = '0c4798e52f26'; // changes whenever the stock numbers change → live KV stock is re-seeded
+export const STOCK_VERSION = '945bbdda75a8'; // changes whenever the stock numbers change → live KV stock is re-seeded
 export const CATALOG = {
  "ht-jersey": {
   "name": "The Jersey",
@@ -96,7 +96,7 @@ export const CATALOG = {
    "S": 0,
    "M": 0,
    "L": 0,
-   "XL": 1,
+   "XL": 0,
    "2XL": 0
   },
   "image": "/images/zip-hoodie-black-1.png"
